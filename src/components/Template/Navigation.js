@@ -7,13 +7,14 @@ import routes from '../../data/routes';
 // Websites Navbar, displays routes defined in 'src/data/routes'
 const Navigation = () => (
   <header id="header">
+    {/* Static "Byron Selvage" without Link */}
     <h1 className="index-link">
       {routes
         .filter((l) => l.index)
         .map((l) => (
-          <Link key={l.label} to={l.path}>
+          <span key={l.label}>
             {l.label}
-          </Link>
+          </span>
         ))}
     </h1>
     <nav className="links">
