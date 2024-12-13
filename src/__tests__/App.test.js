@@ -48,7 +48,7 @@ describe('renders the app', () => {
   it('can navigate to /resume', async () => {
     expect.assertions(3);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(1) > a', // Update child index as necessary
+      '#header > nav > ul > li:nth-child(0) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
@@ -61,7 +61,7 @@ describe('renders the app', () => {
   it('can navigate to /projects', async () => {
     expect.assertions(3);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(2) > a', // Update child index as necessary
+      '#header > nav > ul > li:nth-child(1) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
@@ -74,7 +74,7 @@ describe('renders the app', () => {
   it('can navigate to /stats', async () => {
     expect.assertions(5);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(3) > a', // Update child index as necessary
+      '#header > nav > ul > li:nth-child(2) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
@@ -89,7 +89,7 @@ describe('renders the app', () => {
   it('can navigate to /contact', async () => {
     expect.assertions(3);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(4) > a', // Update child index as necessary
+      '#header > nav > ul > li:nth-child(3) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
