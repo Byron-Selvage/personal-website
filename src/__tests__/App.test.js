@@ -40,31 +40,15 @@ describe('renders the app', () => {
     expect(document.body).toBeInTheDocument();
   });
 
-  it('should render the title', async () => {
+  it('should render the default title and path', async () => {
     expect(document.title).toBe("Michael D'Angelo");
-  });
-
-  it('can navigate to /about', async () => {
-    expect.assertions(7);
-    const aboutLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(1) > a',
-    );
-    expect(aboutLink).toBeInTheDocument();
-    await act(async () => {
-      await aboutLink.click();
-    });
-    expect(document.title).toContain('About |');
-    expect(window.location.pathname).toBe('/about');
-    expect(window.scrollTo).toHaveBeenNthCalledWith(1, 0, 0);
-    expect(global.fetch).toHaveBeenCalledTimes(1);
-    expect(jsonMock).toHaveBeenCalledTimes(0);
-    expect(textMock).toHaveBeenCalledTimes(1);
+    expect(window.location.pathname).toBe('/');
   });
 
   it('can navigate to /resume', async () => {
     expect.assertions(3);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(2) > a',
+      '#header > nav > ul > li:nth-child(1) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
@@ -77,7 +61,7 @@ describe('renders the app', () => {
   it('can navigate to /projects', async () => {
     expect.assertions(3);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(3) > a',
+      '#header > nav > ul > li:nth-child(2) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
@@ -90,7 +74,7 @@ describe('renders the app', () => {
   it('can navigate to /stats', async () => {
     expect.assertions(5);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(4) > a',
+      '#header > nav > ul > li:nth-child(3) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
@@ -105,7 +89,7 @@ describe('renders the app', () => {
   it('can navigate to /contact', async () => {
     expect.assertions(3);
     const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(5) > a',
+      '#header > nav > ul > li:nth-child(4) > a', // Update child index as necessary
     );
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
