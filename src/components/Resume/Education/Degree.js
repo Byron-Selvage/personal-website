@@ -6,8 +6,9 @@ const Degree = ({ data }) => (
     <header>
       <h4 className="degree">{data.degree}</h4>
       <p className="school">
-        <a href={data.link}>{data.school}</a>, {data.year}
+        <a href={data.link} target="_blank" rel="noopener noreferrer">{data.school}</a>, {data.year}
       </p>
+      <p className="gpa">GPA: {data.gpa}</p>
     </header>
   </article>
 );
@@ -18,6 +19,7 @@ Degree.propTypes = {
     link: PropTypes.string.isRequired,
     school: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
+    gpa: PropTypes.number.isRequired,
   }).isRequired,
 };
 

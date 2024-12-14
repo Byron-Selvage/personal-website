@@ -1,15 +1,17 @@
 const degrees = [
   {
-    school: 'Stanford University',
-    degree: 'M.S. Computational and Mathematical Engineering',
-    link: 'https://stanford.edu',
-    year: 2016,
+    school: 'Colorado School of Mines',
+    degree: 'B.S. Computational and Applied Mathematics',
+    link: 'https://www.mines.edu/',
+    year: 2025,
+    gpa: 3.97,
   },
   {
-    school: 'University at Buffalo',
-    degree: 'B.S. Electrical Engineering, Computer Engineering',
-    link: 'https://buffalo.edu',
-    year: 2012,
+    school: 'Red Rocks Community College',
+    degree: 'A.S. Engineering Science',
+    link: 'https://www.rrcc.edu/',
+    year: 2023,
+    gpa: 4.0,
   },
 ];
 
