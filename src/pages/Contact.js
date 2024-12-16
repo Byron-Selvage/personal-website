@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Main from '../layouts/Main';
-import EmailLink from '../components/Contact/EmailLink';
+import TextType from '../components/Contact/TextType';
 import ContactIcons from '../components/Contact/ContactIcons';
 
 const Contact = () => (
@@ -20,7 +20,8 @@ const Contact = () => (
       </header>
       <div className="email-at">
         <p>Feel free to get in touch. You can email me at: </p>
-        <EmailLink />
+        <p><a href="mailto:BSelvage20@gmail.com" target="_blank" rel="noopener noreferrer">BSelvage20@gmail.com</a></p>
+        <TextType />
       </div>
       <ContactIcons />
     </article>
