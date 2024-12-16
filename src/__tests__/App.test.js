@@ -41,7 +41,7 @@ describe('renders the app and tests navigation', () => {
   });
 
   it('should render the default title and path', () => {
-    expect(document.title).toBe("Byron Selvage");
+    expect(document.title).toBe('Resume | Byron Selvage');
     expect(window.location.pathname).toBe('/');
   });
 
@@ -85,7 +85,7 @@ describe('renders the app and tests navigation', () => {
       window.history.pushState({}, '', '/random');
       ReactDOM.createRoot(container).render(<App />);
     });
-    expect(document.body.textContent).toContain('Page not found');
+    expect(document.body.textContent).toContain('Page Not Found Return Home');
     expect(window.location.pathname).toBe('/random');
   });
 });

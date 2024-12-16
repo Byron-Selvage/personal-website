@@ -13,7 +13,7 @@ const PageNotFound = () => (
       </Helmet>
       <h1>Page Not Found</h1>
       <p>
-        Return <Link to="/">home</Link>.
+        <Link to="/"> Return Home</Link>
       </p>
     </div>
   </HelmetProvider>
