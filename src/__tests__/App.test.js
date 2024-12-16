@@ -20,18 +20,28 @@ global.fetch = jest.fn(() => Promise.resolve({
 window.scrollTo = jest.fn();
 
 // Mock all lazy-loaded components
-jest.mock('../pages/Contact', () => () => <div>Contact Page</div>);
-jest.mock('../pages/NotFound', () => () => <div>Page Not Found</div>);
-jest.mock('../pages/Projects', () => () => <div>Projects Page</div>);
-jest.mock('../pages/Resume', () => () => <div>Resume Page</div>);
-jest.mock('../pages/Stats', () => () => <div>Stats Page</div>);
+jest.mock('../pages/Contact', () => function () {
+  return <div>Contact Page</div>;
+});
+jest.mock('../pages/NotFound', () => function () {
+  return <div>Page Not Found</div>;
+});
+jest.mock('../pages/Projects', () => function () {
+  return <div>Projects Page</div>;
+});
+jest.mock('../pages/Resume', () => function () {
+  return <div>Resume Page</div>;
+});
+jest.mock('../pages/Stats', () => function () {
+  return <div>Stats Page</div>;
+});
 
 describe('App component', () => {
   it('renders without crashing', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
   });
 
@@ -39,7 +49,7 @@ describe('App component', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText('Resume Page')).toBeInTheDocument();
   });
@@ -48,7 +58,7 @@ describe('App component', () => {
     render(
       <MemoryRouter initialEntries={['/projects']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText('Projects Page')).toBeInTheDocument();
   });
@@ -57,7 +67,7 @@ describe('App component', () => {
     render(
       <MemoryRouter initialEntries={['/stats']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText('Stats Page')).toBeInTheDocument();
   });
@@ -66,7 +76,7 @@ describe('App component', () => {
     render(
       <MemoryRouter initialEntries={['/contact']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText('Contact Page')).toBeInTheDocument();
   });
@@ -75,7 +85,7 @@ describe('App component', () => {
     render(
       <MemoryRouter initialEntries={['/random']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText('Page Not Found')).toBeInTheDocument();
   });
