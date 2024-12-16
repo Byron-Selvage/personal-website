@@ -58,7 +58,7 @@ const Projects = () => {
             <p>Click project title to learn more</p>
           </div>
         </header>
-        <div className="project-button-container">{getButtons()}</div>
+        <div className="skill-button-container">{getButtons()}</div>
         <div className="project-row-container">
           {filteredProjects().map((project) => (
             <Cell data={project} key={project.title} />
