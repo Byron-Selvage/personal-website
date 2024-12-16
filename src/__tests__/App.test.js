@@ -3,30 +3,30 @@
  */
 
 import '@testing-library/jest-dom';
-import '@testing-library/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import App from '../App';
 
-describe('renders the app', () => {
-  // mocks the fetch API used on the stats page and the about page.
-  const jsonMock = jest.fn(() => Promise.resolve({}));
-  const textMock = jest.fn(() => Promise.resolve(''));
-  global.fetch = jest.fn(() => Promise.resolve({
-    json: jsonMock,
-    text: textMock,
-  }));
-  // mocks the scrollTo API used when navigating to a new page.
-  window.scrollTo = jest.fn();
+// Mocks the fetch API used on the stats page and the about page.
+const jsonMock = jest.fn(() => Promise.resolve({}));
+const textMock = jest.fn(() => Promise.resolve(''));
+global.fetch = jest.fn(() => Promise.resolve({
+  json: jsonMock,
+  text: textMock,
+}));
 
+// Mocks the scrollTo API used when navigating to a new page.
+window.scrollTo = jest.fn();
+
+describe('renders the app and tests navigation', () => {
   let container;
 
   beforeEach(async () => {
     container = document.createElement('div');
     document.body.appendChild(container);
     await act(async () => {
-      await ReactDOM.createRoot(container).render(<App />);
+      ReactDOM.createRoot(container).render(<App />);
     });
   });
 
@@ -36,36 +36,21 @@ describe('renders the app', () => {
     jest.clearAllMocks();
   });
 
-  it('should render the app', async () => {
+  it('should render the app', () => {
     expect(document.body).toBeInTheDocument();
   });
 
-  it('should render the default title and path', async () => {
-    expect(document.title).toBe("Michael D'Angelo");
+  it('should render the default title and path', () => {
+    expect(document.title).toBe("Byron Selvage");
     expect(window.location.pathname).toBe('/');
-  });
-
-  it('can navigate to /resume', async () => {
-    expect.assertions(3);
-    const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(0) > a', // Update child index as necessary
-    );
-    expect(contactLink).toBeInTheDocument();
-    await act(async () => {
-      await contactLink.click();
-    });
-    expect(document.title).toContain('Resume |');
-    expect(window.location.pathname).toBe('/resume');
   });
 
   it('can navigate to /projects', async () => {
     expect.assertions(3);
-    const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(1) > a', // Update child index as necessary
-    );
-    expect(contactLink).toBeInTheDocument();
+    const projectsLink = document.querySelector('a[href="/projects"]');
+    expect(projectsLink).toBeInTheDocument();
     await act(async () => {
-      await contactLink.click();
+      projectsLink.click();
     });
     expect(document.title).toContain('Projects |');
     expect(window.location.pathname).toBe('/projects');
@@ -73,12 +58,10 @@ describe('renders the app', () => {
 
   it('can navigate to /stats', async () => {
     expect.assertions(5);
-    const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(2) > a', // Update child index as necessary
-    );
-    expect(contactLink).toBeInTheDocument();
+    const statsLink = document.querySelector('a[href="/stats"]');
+    expect(statsLink).toBeInTheDocument();
     await act(async () => {
-      await contactLink.click();
+      statsLink.click();
     });
     expect(document.title).toContain('Stats |');
     expect(window.location.pathname).toBe('/stats');
@@ -88,14 +71,21 @@ describe('renders the app', () => {
 
   it('can navigate to /contact', async () => {
     expect.assertions(3);
-    const contactLink = document.querySelector(
-      '#header > nav > ul > li:nth-child(3) > a', // Update child index as necessary
-    );
+    const contactLink = document.querySelector('a[href="/contact"]');
     expect(contactLink).toBeInTheDocument();
     await act(async () => {
-      await contactLink.click();
+      contactLink.click();
     });
     expect(document.title).toContain('Contact |');
     expect(window.location.pathname).toBe('/contact');
+  });
+
+  it('displays 404 for unmatched routes', async () => {
+    await act(async () => {
+      window.history.pushState({}, '', '/random');
+      ReactDOM.createRoot(container).render(<App />);
+    });
+    expect(document.body.textContent).toContain('Page not found');
+    expect(window.location.pathname).toBe('/random');
   });
 });
