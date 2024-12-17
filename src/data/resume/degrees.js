@@ -4,7 +4,7 @@ const degrees = [
     degree: 'B.S. Computational and Applied Mathematics',
     link: 'https://www.mines.edu/',
     year: 2025,
-    gpa: 3.97,
+    gpa: 3.98,
   },
   {
     school: 'Red Rocks Community College',
