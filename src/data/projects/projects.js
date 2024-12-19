@@ -6,7 +6,7 @@ const data = [
     link: '/projects/neural-chaos',
     date: '2024-12-10',
     desc:
-      'Wow such desc',
+      'Exploring chaotic dynamics of neurons in Matlab using the FitzHugh-Nagumo model',
   },
   {
     title: 'Predicting Student Outcomes',
